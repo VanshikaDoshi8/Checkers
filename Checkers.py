@@ -460,22 +460,7 @@ class Checkers(object):
         evaluate: Callable[[int], int] = evaluate2,
         moves: Moves = None,
     ) -> int:
-        """Get the score of the board using alpha-beta algorithm
-
-        Args:
-            player (int): the type of the current player (WHITE, BLACK)
-            maximizer (int): the type of the maximizer player (WHITE, BLACK)
-            depth (int, optional): the current depth of the algorithm. Defaults to 0.
-            alpha (int, optional): the value of alpha. Defaults to -OO.
-            beta (int, optional): the value of beta of the algorithm. Defaults to OO.
-            maxDepth (int, optional): the higher the max depth, 
-                the harder the level of th play and the more time the algorithm will take. Defaults to 4.
-            evaluate (Callable[[int], int], optional): evaluation function. Defaults to evaluate2
-            moves (Moves, optional): the next capture moves (if any). Defaults to None.
-
-        Returns:
-            int|float : score of the baord
-        """
+ 
         if moves == None:
             moves = self.nextMoves(player)
         if len(moves) == 0 or depth == maxDepth:
@@ -547,23 +532,7 @@ class Checkers(object):
         evaluate: Callable[[int], int] = evaluate2,
         enablePrint: bool = True,
     ) -> Tuple[bool, bool]:
-        """play a move using minimax algorithm
-            if the player should continue capturing, it will
 
-        Args:
-            player (int): the type of the player (WHITE, BLACK)
-            moves (Moves, optional): the next capture moves (if any). Defaults to None.
-            maxDepth (int, optional): the max depth of the minimax algorithm
-                the higher the max depth, the harder the level of th play 
-                and the more time the algorithm will take. Defaults to 4.
-            enablePrint (bool, optional): if true it prints the game board 
-                to stdout after playing the move. Defaults to True.
-
-        Returns:
-            continue (bool): false if there is no further plays.  
-            reset (bool): true when there is a captured piece, 
-                used to reset the counter of the draw condition.
-        """
 
         if moves == None:
             moves = self.nextMoves(player)
