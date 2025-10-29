@@ -57,10 +57,6 @@ class Checkers(object):
 
     def printBoard(self, x: int = None, y: int = None):
         """Print the game board in stdout, the given position is printed in green
-
-        Args:
-            x (int, optional): the new x position of the recently played move. Defaults to None.
-            y (int, optional): the new y position of the recently played move. Defaults to None.
         """
         for i in range(self.size):
             for j in range(self.size):
@@ -78,9 +74,6 @@ class Checkers(object):
 
     def encodeBoard(self) -> int:
         """Encode the game board so that each state can be represented by a single unique integer
-
-        Returns:
-            int: the value of the encoded game board
         """
         value = 0
         for i in range(self.size):
@@ -93,41 +86,22 @@ class Checkers(object):
 
     def getBoard(self):
         """Get Game board
-
-        Returns:
-            Board: game board
         """
         return deepcopy(self.board)
 
     def setBoard(self, board: Board):
         """Set game board
 
-        Args:
-            board (Board): board to set the game borad to
         """
         self.board = deepcopy(board)
 
     def isValid(self, x: int, y: int) -> bool:
         """Check if the given position is inside the board
-
-        Args:
-            x (int): x position
-            y (int): y position
-
-        Returns:
-            bool: the given position is valid
         """
         return x >= 0 and x < self.size and y >= 0 and y < self.size
 
     def nextPositions(self, x: int, y: int) -> Tuple[Positions, Positions]:
         """Get the possible next positions for a given position
-
-        Args:
-            x (int): x position
-            y (int): y position
-
-        Returns:
-            (Positions, Positions): next normal positions, next capture positions
         """
         if self.board[x][y] == 0:
             return []
@@ -155,11 +129,6 @@ class Checkers(object):
     def nextMoves(self, player: int) -> Moves:
         """Get the next moves of the game board for a certian player
 
-        Args:
-            player (int): the type of player (WHITE, BLACK)
-
-        Returns:
-            Moves: valid moves for the player
         """
         captureMoves = []
         normalMoves = []
